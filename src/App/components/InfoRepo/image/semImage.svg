@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <g id="semImage" transform="translate(-731 -698)">
+    <g id="Sem_Imagem" data-name="Sem Imagem" transform="translate(731 698)" fill="#323c3a" stroke="#707070" stroke-width="1">
+      <circle cx="150" cy="150" r="150" stroke="none"/>
+      <circle cx="150" cy="150" r="149.5" fill="none"/>
+    </g>
+    <text id="Sem_Imagem_desse_serviço" data-name="Sem Imagem desse serviço" transform="translate(795 809)" fill="#fff" font-size="26" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="6.672" y="28">Sem Imagem </tspan><tspan x="5.986" y="63">desse serviço</tspan></text>
+  </g>
+</svg>
