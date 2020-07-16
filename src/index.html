@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Análise de produtividade github">
+        <base href="/" />
+        <link rel="shortcut icon" href="https://f.hubspotusercontent30.net/hub/7223485/hubfs/Sigalei-logo-26%20(1).png?width=108&height=108" type="image/x-icon">
+        <title>Sigalei Github</title>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(() => console.log('Service worker registered'))
+                    .catch(error => console.log(error))
+            }
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>

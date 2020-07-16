@@ -1,0 +1,53 @@
+{
+  "name": "ziro_log",
+  "version": "1.0.0",
+  "description": "App para consulta de frete ziro",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode=development --open",
+    "build": "webpack --mode=production -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AhmadForhat/ziro_log"
+  },
+  "keywords": [],
+  "author": "Ahmad Forhat",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "compression-webpack-plugin": "^3.0.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^1.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-pwa-manifest": "^4.1.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.7",
+    "@nivo/bar": "^0.62.0",
+    "apollo-boost": "^0.4.9",
+    "axios": "^0.19.0",
+    "firebase": "^7.6.1",
+    "framer-motion": "^1.10.3",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.10.4",
+    "moment": "^2.27.0",
+    "react": "^16.12.0",
+    "react-apollo": "^3.1.5",
+    "react-dom": "^16.12.0",
+    "react-media-hook": "^0.4.7",
+    "react-router-dom": "^5.2.0",
+    "text-ellipsis": "^1.0.3",
+    "webfontloader": "^1.6.28",
+    "wouter": "^2.4.0"
+  }
+}
