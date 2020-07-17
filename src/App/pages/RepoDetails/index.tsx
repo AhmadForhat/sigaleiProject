@@ -1,5 +1,5 @@
 import React from 'react';
-import GraphicCommits from '../../components/GraphicCommits'
+import GraphicCommits from '../../components/GraphicCommits/index.tsx'
 
 const RepoDetails = ({data}) => {
     const [repoInfo] = data

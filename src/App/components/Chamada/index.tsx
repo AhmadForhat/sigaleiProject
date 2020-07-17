@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useMediaPredicate } from "react-media-hook";
 import { motion } from 'framer-motion'
-import {containerWeb, containerMobile} from './style'
+import {containerWeb, containerMobile} from './style.ts'
 import imgChamada from './image/devChamada.svg'
-import Button from '../Button'
+import Button from '../Button/index.tsx'
 
 const Chamada = () => {
     const webLayout = useMediaPredicate("(min-width: 600px)")

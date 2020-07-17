@@ -1,10 +1,9 @@
-import { auth, db } from '../../../Firebase'
+import { auth } from '../../../Firebase/index.ts'
 
 const sendToBackend = async state => {
-    const {email, pass, name, gitHub} = state
+    const {login:email, pass} = state
 	try {
-        await auth.createUserWithEmailAndPassword(email, pass)
-        await db.collection('users').add({name, email, gitHub})
+        await auth.signInWithEmailAndPassword(email, pass)
         await localStorage.setItem('isLogged',true)
         await localStorage.setItem('email',email)
         window.location.replace('/')

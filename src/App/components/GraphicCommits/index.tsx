@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar'
-import Spinner from '../Spinner'
+import moment from 'moment'
+import ellipsis from 'text-ellipsis'
+import Spinner from '../Spinner/index.tsx'
 
 
 const removeDuplicates = arrayWithDuplicates => {
@@ -11,10 +13,15 @@ const removeDuplicates = arrayWithDuplicates => {
 		return [...accumulated, current]
 	}, [])
 }
-
 const GraphicCommits = ({data}) => {
     const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(1)
     const [array, setArray] = useState([])
+    const arrayCommits = data.object.history.nodes.filter(item => {
+        return item.author.user
+    })
+    const anterior = (page-1)*4
+    const proxima = ((page-1)*4)+4
     useEffect(() => {
         const history = data.object.history.nodes
         const arrayUsers = history.map(item => {
@@ -63,16 +70,16 @@ const GraphicCommits = ({data}) => {
             }
         })
         function compare( a, b ) {
-            if ( a.additions < b.additions ){
+            if ( a.commits < b.commits ){
               return 1;
             }
-            if ( a.additions > b.additions ){
+            if ( a.commits > b.commits ){
               return -1;
             }
             return 0;
           }
         const orderArray = newArray.sort(compare)
-        const removedArray = orderArray.splice(0,8)
+        const removedArray = orderArray.splice(0,4)
         setLoading(false)
         setArray(removedArray)
     },[])
@@ -158,9 +165,9 @@ const GraphicCommits = ({data}) => {
             />
             <h2 style={{marginBottom:'20px'}}>Tops Commit</h2>
             <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-around', alignItems:'center'}}>
-                {array.map(item => {
+                {array.map((item,index) => {
                     return(
-                        <div style={{display:'flex', flexWrap:'wrap', padding:'20px', justifyContent:'space-around', width:'40%', minWidth:'200px', backgroundColor: 'white', boxShadow:'0 2px 4px 1px #B3B3B3', marginBottom:'30px', alignSelf:'center'}}>
+                        <div key={index} style={{display:'flex', flexWrap:'wrap', padding:'20px', justifyContent:'space-around', width:'40%', minWidth:'200px', backgroundColor: 'white', boxShadow:'0 2px 4px 1px #B3B3B3', marginBottom:'30px', alignSelf:'center'}}>
                             <img style={{width:'10%', minWidth:'150px', borderRadius:'300px'}} src={item.avatarUrl} alt='avatar github'/>
                             <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
                                 <a href={item.url}>{item.nome}</a>
@@ -171,6 +178,40 @@ const GraphicCommits = ({data}) => {
                         </div>
                     )
                 })}
+            </div>
+            <div style={{display:'flex', justifyContent:'space-between', marginBottom:'20px'}}>
+                <h2>Last Commits</h2>
+                <h2>{page}/{Math.round(arrayCommits.length/4)}</h2>
+            </div>
+            <div style={{display:'flex', flexWrap:'wrap', width:'100%'}}>
+                {arrayCommits.slice(anterior,proxima).map((commit) => {
+                    if(commit.author.user){
+                        return (
+                            <div style={{width:'20%', display:'flex', flexWrap:'wrap', justifyContent:'space-between', margin:'0 auto', minWidth:'200px', backgroundColor: 'white', boxShadow:'0 2px 4px 1px #B3B3B3', marginBottom:'30px', padding:'20px'}}>
+                                <img style={{width:'40%', height:'40%', minWidth:'150px', borderRadius:'300px', alignSelf:'center', margin:'0 auto'}} src={commit.author.user.avatarUrl}/>
+                                <div style={{display:'flex', flexDirection:'column', }}>
+                                    <h2>User: {commit.author.user.login}</h2>
+                                    <a href={commit.url}>Commit: {ellipsis(commit.messageHeadline,20)}</a>
+                                    <h2>Data: {moment(commit.committedDate).format('DD/MM/YY - HH:mm:ss')}</h2>
+                                    <h2>Adições: {commit.additions}</h2>
+                                    <h2>Remoções: {commit.deletions}</h2>
+                                </div>
+                            </div>
+                        )
+                    }
+                })}
+            </div>
+            <div style={{display:'flex', justifyContent:'center', marginBottom:'80px'}}>
+                <button style={{marginRight:'20px'}} onClick={() => {
+                if(page-1 > 0){
+                    setPage(page - 1)
+                }
+                }}>Anterior</button>
+                <button onClick={() =>{
+                    if(page*4 <= arrayCommits.length){
+                        setPage(page + 1)
+                    }
+                }}>Proxima</button>
             </div>
         </>
     )

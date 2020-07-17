@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {container} from './style'
+import React from 'react';
+import {container} from './style.ts'
 import imgFacebook from './image/facebook.png'
 import imgInstagram from './image/instagram.png'
 import imgLinkedin from './image/linkedin.png'

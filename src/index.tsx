@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 import { load as FontLoader } from 'webfontloader'
-import { App } from './App/index'
+import { App } from './App/index.tsx'
 import './index.css'
 
 FontLoader({

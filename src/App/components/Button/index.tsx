@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMediaPredicate } from 'react-media-hook'; 
-import {buttonLink, buttonLinkMobile, buttonForm} from './style'
+import {buttonLink, buttonLinkMobile, buttonForm} from './style.ts'
 
 const Button = ({type, title, funcao}) => {
     const webLayout = useMediaPredicate("(min-width: 600px)")

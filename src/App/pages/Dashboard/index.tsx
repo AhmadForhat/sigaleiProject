@@ -1,8 +1,8 @@
 import React from 'react';
 import {useRouteMatch} from "react-router-dom";
-import Spinner from '../../components/Spinner'
-import InfoRepo from '../../components/InfoRepo'
-import RepoDetails from '../RepoDetails'
+import Spinner from '../../components/Spinner/index.tsx'
+import InfoRepo from '../../components/InfoRepo/index.tsx'
+import RepoDetails from '../RepoDetails/index.tsx'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
@@ -40,6 +40,7 @@ const Dashboard = () => {
                       additions
                       deletions
                       committedDate
+                      url
                       author {
                         user {
                           login

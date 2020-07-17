@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Input from '../Input'
-import Spinner from '../Spinner'
-import { useForm } from './utils/useForm'
+import Input from '../Input/index.tsx'
+import Spinner from '../Spinner/index.tsx'
+import { useForm } from './utils/useForm.ts'
 
 const Form = ({sendToBackend, array}) => {
     const [submitForm] = useForm()

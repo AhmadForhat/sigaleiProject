@@ -1,5 +1,5 @@
 import React from 'react'
-import { svg } from './styles'
+import { svg } from './styles.ts'
 
 const Spinner = ({ size = '7rem', style = svg }) =>
 	<svg style={style} width={size} height={size} viewBox='0 0 24 24' strokeWidth='3' strokeLinecap='round'>

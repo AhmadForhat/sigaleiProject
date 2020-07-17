@@ -4,12 +4,12 @@ import {
     Switch,
     Route
   } from "react-router-dom";
-import Home from './pages/Home'
-import Cadastro  from './pages/Cadastro'
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
-import Dashboard from './pages/Dashboard'
-import NotFound from './pages/NotFound'
+import Home from './pages/Home/index.tsx'
+import Cadastro  from './pages/Cadastro/index.tsx'
+import Login from './pages/Login/index.tsx'
+import Navbar from './components/Navbar/index.tsx'
+import Dashboard from './pages/Dashboard/index.tsx'
+import NotFound from './pages/NotFound/index.tsx'
 
 
 export default function App() {

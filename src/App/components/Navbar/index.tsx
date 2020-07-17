@@ -3,7 +3,7 @@ import { useMediaPredicate } from "react-media-hook";
 import logoBranco from './image/FHT_Branco.png'
 import menu from './image/menu-24px.png'
 import close from './image/close-24px.png'
-import {container, linkStyle, containerMobile} from './style'
+import {container, linkStyle, containerMobile} from './style.ts'
 
 const Navbar = ({links}) => {
     const [hamburger, setHamburger] = useState(false);

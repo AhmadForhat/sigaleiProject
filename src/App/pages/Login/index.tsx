@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useMediaPredicate } from "react-media-hook";
-import Form from '../../components/Form'
+import Form from '../../components/Form/index.tsx'
 import imgLogin from './image/imgLogin.png'
-import {boxContainer, boxContainerMobile} from './styles'
-import sendToBackend from './sendToBackend'
+import {boxContainer, boxContainerMobile} from './styles.ts'
+import sendToBackend from './sendToBackend.ts'
 
 const Login = () => {
 	const [login, setLogin] = useState('')

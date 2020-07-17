@@ -3,13 +3,15 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const webpack = require('webpack')
+const path = require('path');
 
 module.exports = (env, { mode }) => {
 	const config = {
+		entry: ['@babel/polyfill', 'whatwg-fetch', 'react-hot-loader/patch', path.join(__dirname, '/src/index.tsx')],
 		module: {
 			rules: [
 				{
-					test: /\.js$/,
+					test: /\.tsx$/,
 					exclude: /node_modules/,
 					use: {
 						loader: 'babel-loader',
@@ -19,6 +21,11 @@ module.exports = (env, { mode }) => {
 						}
 					}
 				},
+				  {
+					test: /\.ts$/,
+					use: ["source-map-loader"],
+					enforce: "pre"
+				  },
 				{
 					test: /\.css$/,
 					use: ['style-loader', 'raw-loader']

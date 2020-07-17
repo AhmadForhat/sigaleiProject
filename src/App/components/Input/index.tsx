@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from 'framer-motion'
-import {container, titulo, caixa, caixaButton} from './style'
+import {container, titulo, caixa, caixaButton} from './style.ts'
 
 function Input({title, type, placeholder, valor, setValor}) {
   if(type === 'submit'){
