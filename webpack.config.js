@@ -75,8 +75,8 @@ module.exports = (env, { mode }) => {
 				{ from: './src/sw.js', to: 'sw.js', toType: 'file' }
 			]),
 			new WebpackPwaManifest({
-				name: 'Cursos',
-				short_name: 'Cursos',
+				name: 'Sigalei',
+				short_name: 'Sigalei',
 				start_url: '/',
 				background_color: '#FFF',
 				theme_color: '#FFF',
