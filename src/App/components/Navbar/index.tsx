@@ -29,11 +29,11 @@ const Navbar = ({links}) => {
                         <>
                         <div style={containerMobile}>
                             <a style={{color:'white', position:'fixed', top:'0'}} onClick={() => setHamburger(false)}><img src={close} alt="Fechar menu" style={{width:'30px', margin:'5px'}}/></a>
-                            <img src={logoBranco} alt="Logo" style={{width:'70px', margin:'10px auto', marginTop:'40px'}}/>
+                            <a href='/'><img src={logoBranco} alt="Logo" style={{width:'70px', margin:'10px auto', marginTop:'40px'}}/></a>
                             <div style={{display:'flex', flexDirection:'column', marginTop:'40px'}}>
                                 {links.map((link,index) => {
                                     return (
-                                        <div key={index} style={{alignSelf:'center'}}>
+                                        <div key={index} style={{alignSelf:'center', marginTop:'40px'}}>
                                             <a style={linkStyle} href={link.href}>{link.title}</a>
                                         </div>
                                     )

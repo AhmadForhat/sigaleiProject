@@ -8,7 +8,8 @@ import sendToBackend from './sendToBackend.ts'
 const Login = () => {
 	const [login, setLogin] = useState('')
 	const [pass, setPass] = useState('')
-	const state = {setPass, setLogin, login, pass}
+	const [notFound, setNotFound] = useState('')
+	const state = {setPass, setLogin, login, pass, setNotFound, notFound}
 	const arrayForm = [
 		{
 			title:'Login',
@@ -32,7 +33,8 @@ const Login = () => {
 		<div style={{display:'flex', justifyContent:'space-around'}}>
 				<div style={webLayout ? boxContainer: boxContainerMobile}>
 					<Form sendToBackend={() => sendToBackend(state)} array={arrayForm}/>
-					<a style={{fontSize:'14px', textAlign:'center', color:''}} href='cadastro'>Ainda não possuí conta?</a>
+					{notFound && <p style={{fontSize:'14px', textAlign:'center', color:'red', marginBottom:'20px'}}>{notFound}</p>}
+					<a style={{fontSize:'14px', textAlign:'center'}} href='cadastro'>Ainda não possuí conta?</a>
 				</div>
 				<div style={{width:'40%', display:'flex', marginTop:'150px'}}>
 					<img src={imgLogin} style={{width:'100%', alignSelf:'center', margin:'0 auto'}}/>
@@ -44,6 +46,7 @@ const Login = () => {
 		<>
 			<div style={boxContainerMobile}>
 				<Form sendToBackend={() => sendToBackend(state)} array={arrayForm}/>
+				{notFound && <p style={{fontSize:'14px', textAlign:'center', color:'red', marginBottom:'20px'}}>{notFound}</p>}
 				<a style={{fontSize:'14px', textAlign:'center', color:''}} href='cadastro'>Ainda não possuí conta?</a>
 			</div>
 		</>

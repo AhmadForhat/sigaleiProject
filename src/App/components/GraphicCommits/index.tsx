@@ -3,6 +3,8 @@ import { ResponsiveBar } from '@nivo/bar'
 import moment from 'moment'
 import ellipsis from 'text-ellipsis'
 import Spinner from '../Spinner/index.tsx'
+import { useMediaPredicate } from "react-media-hook";
+import {buttonLink, buttonLink2} from './style.ts'
 
 
 const removeDuplicates = arrayWithDuplicates => {
@@ -20,8 +22,10 @@ const GraphicCommits = ({data}) => {
     const arrayCommits = data.object.history.nodes.filter(item => {
         return item.author.user
     })
-    const anterior = (page-1)*4
-    const proxima = ((page-1)*4)+4
+    const webLayout = useMediaPredicate("(min-width: 600px)")
+    const number = webLayout ? 4 : 1
+    const anterior = (page-1)*number
+    const proxima = ((page-1)*number)+number
     useEffect(() => {
         const history = data.object.history.nodes
         const arrayUsers = history.map(item => {
@@ -79,10 +83,10 @@ const GraphicCommits = ({data}) => {
             return 0;
           }
         const orderArray = newArray.sort(compare)
-        const removedArray = orderArray.splice(0,4)
+        const removedArray = orderArray.splice(0,number)
         setLoading(false)
         setArray(removedArray)
-    },[])
+    },[webLayout])
     if(loading) return <Spinner />
     return (
         <>
@@ -181,7 +185,7 @@ const GraphicCommits = ({data}) => {
             </div>
             <div style={{display:'flex', justifyContent:'space-between', marginBottom:'20px'}}>
                 <h2>Last Commits</h2>
-                <h2>{page}/{Math.round(arrayCommits.length/4)}</h2>
+                <h2>{page}/{Math.round(arrayCommits.length/number)}</h2>
             </div>
             <div style={{display:'flex', flexWrap:'wrap', width:'100%'}}>
                 {arrayCommits.slice(anterior,proxima).map((commit) => {
@@ -202,13 +206,13 @@ const GraphicCommits = ({data}) => {
                 })}
             </div>
             <div style={{display:'flex', justifyContent:'center', marginBottom:'80px'}}>
-                <button style={{marginRight:'20px'}} onClick={() => {
+                <button style={buttonLink} onClick={() => {
                 if(page-1 > 0){
                     setPage(page - 1)
                 }
                 }}>Anterior</button>
-                <button onClick={() =>{
-                    if(page*4 <= arrayCommits.length){
+                <button style={buttonLink2} onClick={() =>{
+                    if(page*number <= arrayCommits.length - 1){
                         setPage(page + 1)
                     }
                 }}>Proxima</button>

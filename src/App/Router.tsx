@@ -10,6 +10,7 @@ import Login from './pages/Login/index.tsx'
 import Navbar from './components/Navbar/index.tsx'
 import Dashboard from './pages/Dashboard/index.tsx'
 import NotFound from './pages/NotFound/index.tsx'
+import Logout from './pages/Logout/index.tsx'
 
 
 export default function App() {
@@ -32,14 +33,7 @@ export default function App() {
                 <Route exact path="/config/logout">
                     <>
                     <Navbar links={navbarArrayLogado}/>
-                    <>
-                    <h2 style={{marginTop:'100px'}}>Deseja sair da página?</h2>
-                    <a href='/' onClick={() => {
-                        localStorage.removeItem('isLogged')
-                        localStorage.removeItem('email')
-                        localStorage.removeItem('userGithub')
-                        }}>Logout</a>
-                    </>
+                    <Logout />
                     </>
                 </Route>
                 <Route path="*">
